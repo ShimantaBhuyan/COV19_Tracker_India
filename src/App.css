@@ -55,8 +55,14 @@
 
 .formControl, .MuiFormControl-root{
   margin: 5px;
-  width: 300px;
+  width: 30vw;
   color: white;
+}
+
+@media screen and (max-height: 900px){
+  .formControl, .MuiFormControl-root{
+    width: 70vw;
+  }
 }
 
 #selectStateLabel {
@@ -69,7 +75,6 @@
 }
 
 .footer{
-  position: absolute;
   bottom: 0;
   width: 100vw;
   text-align: center;

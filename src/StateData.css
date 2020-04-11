@@ -1,14 +1,32 @@
-.root {
+.root, .MuiPaper-root, .MuiCard-root {
     min-width: 20vw;
+    max-width: 80vw;
     min-height: 35vh;
     background: #eeeeee;
 }
 .title {
     font-size: 25px;
 }
-.pos {
-    margin-bottom: 12px;
+
+@media screen and (min-height:900px){
+    .root, .MuiPaper-root, .MuiCard-root {
+        min-height: 25vh;
+    }
+    .title {
+        font-size: 25px;
+    }
 }
+@media screen and (max-height:900px){
+    .root, .MuiPaper-root, .MuiCard-root {
+        min-width: 15vw;
+        min-height: 15vh;
+    }
+    .title {
+        font-size: 20px;
+        margin-top: 0;
+    }    
+}
+
 .confirmed {
     color: #f44336;
 }
