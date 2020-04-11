@@ -1,0 +1,35 @@
+.root {
+    min-width: 20vw;
+    min-height: 35vh;
+    background: #eeeeee;
+}
+.title {
+    font-size: 25px;
+}
+.pos {
+    margin-bottom: 12px;
+}
+.confirmed {
+    color: #f44336;
+}
+.recovered {
+    color: #4caf50;
+}
+.active {
+    color:#03a9f4;
+}
+.deaths {
+    color: #616161;
+}    
+.deltaconfirmed {
+    color: #ef9a9a;
+}
+.deltarecovered {
+    color: #a5d6a7;
+}
+.deltadeaths {
+    color: #9e9e9e;
+}
+.lastUpdated {
+    color: #78909c;
+}
