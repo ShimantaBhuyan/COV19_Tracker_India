@@ -155,7 +155,11 @@ class App extends Component {
             </Select>
           </FormControl>
         </header>
-        {stateDataCard}
+        {stateDataCard}    
+        <div className="footer">
+          <p>👨‍💻 by <a href="https://www.devkrishna.co">Shimanta</a></p>
+          <p>Source: <a href="https://api.covid19india.org/">COVID19-India API</a></p>
+        </div>
       </div>
     );
   }

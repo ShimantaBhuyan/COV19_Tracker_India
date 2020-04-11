@@ -67,3 +67,10 @@
   color: white;
   border: white;
 }
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  text-align: center;
+}
