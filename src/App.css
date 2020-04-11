@@ -42,7 +42,7 @@
     transform: rotate(360deg);
   }
 }
-
+/* 
 .stateList {
   height: 3vh;
   border-radius: 8px;
@@ -51,4 +51,19 @@
 
 .stateList option{
   width: 100;
+} */
+
+.formControl, .MuiFormControl-root{
+  margin: 5px;
+  width: 20vw;
+  color: white;
+}
+
+#selectStateLabel {
+  color: white;  
+}
+
+.MuiFormControl-root .MuiSelect-root {  
+  color: white;
+  border: white;
 }

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import StateData from './StateData';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import './App.css';
 
 class App extends Component {
@@ -102,16 +106,20 @@ class App extends Component {
   render() {
     // states list sorted in alphabetical order
     let stateList = this.state.States.length > 0 
-    && this.state.States.map((state, index) => {
+    && this.state.States.map((state) => {
       return (
-        <option key={index} value={state.code}>
+        <MenuItem value={state.code !== undefined ? state.code : ''}>
           {state.name}
-        </option>
+        </MenuItem>   
       )  
     })
     .sort((st1, st2) => {
       return ((st1.props.children.toUpperCase() < st2.props.children.toUpperCase()) ? -1 : 1);
     });
+    /* const emptyMenuItem = () => {
+      return (<MenuItem value=""><em>None</em></MenuItem>);
+    }
+    stateList.unshift(emptyMenuItem); */
 
     let stateDataCard = (this.state.confirmed !== undefined) ? 
       (
@@ -133,10 +141,19 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h3>COVID-19 India Tracker</h3> 
-          <p>Select State</p>
-          <select className="stateList" name="selectedState" value={this.state.statecode} onChange={this.showStatesData}>
-            {stateList}
-          </select> 
+
+          <FormControl variant="outlined" className="formControl">
+            <InputLabel id="selectStateLabel">Select state</InputLabel>
+            <Select
+              labelId="selectStateLabel"
+              id="selectStateElement"
+              value={this.state.statecode !== undefined ? this.state.statecode : ''} 
+              onChange={this.showStatesData} 
+              children={stateList} 
+              label="Select state"
+            >
+            </Select>
+          </FormControl>
         </header>
         {stateDataCard}
       </div>
