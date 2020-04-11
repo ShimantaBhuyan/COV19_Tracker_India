@@ -54,7 +54,7 @@
 } */
 
 .formControl, .MuiFormControl-root{
-  margin: 5px;
+  margin-bottom: 10px;
   width: 30vw;
   color: white;
 }

@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './App.css';
+import { Button } from '@material-ui/core';
 
 class App extends Component {
   state = {
@@ -24,46 +25,11 @@ class App extends Component {
   }
 
   componentDidMount(){
-    window.addEventListener("load", this.getStatesData);    
+    window.addEventListener("load", this.getStatesList);    
     window.addEventListener("load", this.showStatesData);
   }
 
-  getStatesData = async e => {
-    e.preventDefault();
-    try{
-      const apiCall = await fetch(
-        `https://cors-anywhere.herokuapp.com/https://api.covid19india.org/data.json`
-      );
-      const {statewise} = await apiCall.json();      
-      this.setState({
-        statesData: statewise
-      });       
-      this.setState({
-        States : statewise.map((st) => {
-          return ({"code":st.statecode, "name":st.state});
-        })
-      });
-    } catch (ex) {
-      console.log(ex.message);
-    }
-  };
-
-  showStatesData = async e => {  
-    let stateCode = undefined;
-    //if(e.detail === 0) {
-      stateCode = e.target.value;
-    //}
-
-    e.preventDefault();
-
-    let stateName;
-    let tempStateData = stateCode !== undefined && this.state.States.filter((st) => {
-      return (st.code === stateCode);
-    });
-    if (tempStateData.length > 0) {
-      stateName = tempStateData[0].name;
-    }
-
+  setStatesData = (stateCode, stateName) => {
     if(stateCode && stateName) {      
       this.setState({
         statecode: stateCode,
@@ -101,7 +67,53 @@ class App extends Component {
         deltadeaths: undefined
       });
     }
+  }
+
+  getStatesList = async e => {
+    e.preventDefault();
+    try{
+      const apiCall = await fetch(
+        `https://cors-anywhere.herokuapp.com/https://api.covid19india.org/data.json`
+      );
+      const {statewise} = await apiCall.json();      
+      this.setState({
+        statesData: statewise
+      });       
+      this.setState({
+        States : statewise.map((st) => {
+          return ({"code":st.statecode, "name":st.state});
+        })
+      });
+    } catch (ex) {
+      console.log(ex.message);
+    }
   };
+
+  showStatesData = async e => {      
+    let stateCode = undefined;
+    //if(e.detail === 0) {
+      stateCode = e.target.value;
+    //}
+
+    e.preventDefault();
+
+    let stateName;
+    let tempStateData = stateCode !== undefined && this.state.States.filter((st) => {
+      return (st.code === stateCode);
+    });
+    if (tempStateData.length > 0) {
+      stateName = tempStateData[0].name;
+    }
+    
+    if(stateCode && stateName)
+      this.setStatesData(stateCode, stateName); 
+    else
+      this.setStatesData(null, null);
+  };  
+
+  showTotal = async e => {
+    this.setStatesData("TT", "Total");
+  }
 
   render() {
     // states list sorted in alphabetical order
@@ -141,7 +153,6 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h3>COVID-19 India Tracker</h3> 
-
           <FormControl variant="outlined" className="formControl">
             <InputLabel id="selectStateLabel">Select state</InputLabel>
             <Select
@@ -150,14 +161,17 @@ class App extends Component {
               value={this.state.statecode !== undefined ? this.state.statecode : ''} 
               onChange={this.showStatesData} 
               children={stateList} 
-              label="Select state"
-            >
-            </Select>
+              label="Select state" />
           </FormControl>
+          <br/>
+          <Button variant="contained" color="primary" onClick={this.showTotal}>
+            Show Pan-India Cases
+          </Button>
         </header>
-        {stateDataCard}    
+        {stateDataCard}  
+          
         <div className="footer">
-          <p><span role="img">👨‍💻</span> by <a href="https://www.devkrishna.co">Shimanta</a></p>
+          <p><span role="img" aria-labelledby="jsx-a11y/accessible-emoji">👨‍💻</span> by <a href="https://www.devkrishna.co">Shimanta</a></p>
           <p>Source: <a href="https://api.covid19india.org/">COVID19-India API</a></p>
         </div>
       </div>
