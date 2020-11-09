@@ -10,6 +10,7 @@ import { Button } from '@material-ui/core';
 
 class App extends Component {
   state = {
+    loaded : false,
     States: [],
     statesData: [],
     statecode: undefined,
@@ -24,8 +25,8 @@ class App extends Component {
     deltadeaths: undefined
   }
 
-  componentDidMount(){
-    window.addEventListener("load", this.getStatesList);    
+  componentDidMount() {    
+    window.addEventListener("load", this.getStatesList);  
     window.addEventListener("load", this.showStatesData);
   }
 
@@ -82,7 +83,8 @@ class App extends Component {
       this.setState({
         States : statewise.map((st) => {
           return ({"code":st.statecode, "name":st.state});
-        })
+        }),
+        loaded: true
       });
     } catch (ex) {
       console.log(ex.message);
@@ -153,20 +155,28 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h3>COVID-19 India Tracker</h3> 
-          <FormControl variant="outlined" className="formControl">
-            <InputLabel id="selectStateLabel">Select state</InputLabel>
-            <Select
-              labelId="selectStateLabel"
-              id="selectStateElement"
-              value={this.state.statecode !== undefined ? this.state.statecode : ''} 
-              onChange={this.showStatesData} 
-              children={stateList} 
-              label="Select state" />
-          </FormControl>
-          <br/>
-          <Button variant="contained" color="primary" onClick={this.showTotal}>
-            Show Pan-India Cases
-          </Button>
+          {
+            !this.state.loaded && <h4>Fetching data from api...</h4>
+          }
+          {
+            this.state.loaded && 
+            <div>
+                <FormControl variant="outlined" className="formControl">
+                <InputLabel id="selectStateLabel">Select state</InputLabel>
+                <Select
+                  labelId="selectStateLabel"
+                  id="selectStateElement"
+                  value={this.state.statecode !== undefined ? this.state.statecode : ''} 
+                  onChange={this.showStatesData} 
+                  children={stateList} 
+                  label="Select state" />
+              </FormControl>
+              <br/>
+              <Button variant="contained" color="primary" onClick={this.showTotal}>
+                Show Pan-India Cases
+              </Button>
+            </div>          
+          }
         </header>
         {stateDataCard}  
           

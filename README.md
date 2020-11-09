@@ -8,6 +8,7 @@
 ## TODO
 
 - [x] Show statewise data
+- [x] Await loading of data
 - [ ] Show district data
 - [ ] Show time-series data
 
