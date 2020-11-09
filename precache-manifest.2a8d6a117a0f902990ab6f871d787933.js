@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c9fe60381f7b38dfe5c9cd977ee5bb43",
+    "revision": "ef9bafbcdf766ad34f953ac5ab22199e",
     "url": "/COV19_Tracker_India/index.html"
   },
   {
-    "revision": "9bef66c8c1de70cf2e41",
-    "url": "/COV19_Tracker_India/static/css/main.8cfb63a0.chunk.css"
+    "revision": "a672c58855cfa10bff86",
+    "url": "/COV19_Tracker_India/static/css/main.525fd365.chunk.css"
   },
   {
     "revision": "8d4db8f0aa0f994cec60",
@@ -16,15 +16,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/COV19_Tracker_India/static/js/2.e3476b37.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9bef66c8c1de70cf2e41",
-    "url": "/COV19_Tracker_India/static/js/main.e58043f2.chunk.js"
+    "revision": "a672c58855cfa10bff86",
+    "url": "/COV19_Tracker_India/static/js/main.e34965ab.chunk.js"
   },
   {
     "revision": "bae7064074859bbbef92",
     "url": "/COV19_Tracker_India/static/js/runtime-main.f19bfc9c.js"
   },
   {
-    "revision": "5d5d9eefa31e5e13a6610d9fa7a283bb",
-    "url": "/COV19_Tracker_India/static/media/logo.5d5d9eef.svg"
+    "revision": "ee7cd8ed2dcec943251eb2763684fc6f",
+    "url": "/COV19_Tracker_India/static/media/logo.ee7cd8ed.svg"
   }
 ]);
