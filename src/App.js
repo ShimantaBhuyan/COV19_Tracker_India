@@ -181,7 +181,7 @@ class App extends Component {
         {stateDataCard}  
           
         <div className="footer">
-          <p><span role="img" aria-labelledby="jsx-a11y/accessible-emoji">👨‍💻</span> by <a href="www.devkrishna.in">Shimanta</a></p>
+          <p><span role="img" aria-labelledby="jsx-a11y/accessible-emoji">👨‍💻</span> by <a href="https://www.devkrishna.in">Shimanta</a></p>
           <p>Source: <a href="https://api.covid19india.org/">COVID19-India API</a></p>
         </div>
       </div>
